@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
+  <POU Name="MAIN" Id="{19ef5ada-303e-4586-a55e-29658a9ad5ab}" SpecialFunc="None">
+    <Declaration><![CDATA[// Hola Mundo de la Programación de PLC
+PROGRAM MAIN
+VAR
+    ContadorCiclos: UINT;
+    i_Pulsador AT %I* : BOOL;
+    o_Lampara  AT %Q* : BOOL;
+    
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[ContadorCiclos := ContadorCiclos + 1;
+o_Lampara := i_Pulsador;]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="25" Count="0" />
+      <LineId Id="27" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
