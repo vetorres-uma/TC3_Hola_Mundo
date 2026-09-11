@@ -7,7 +7,6 @@ VAR
     ContadorCiclos: UINT;
     i_Pulsador AT %I* : BOOL;
     o_Lampara  AT %Q* : BOOL;
-    
 END_VAR
 ]]></Declaration>
     <Implementation>

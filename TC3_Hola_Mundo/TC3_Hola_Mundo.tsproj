@@ -10,7 +10,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{17FB7D44-55F8-407D-BEBB-D93727B4A92E}" Name="Hola_Mundo_PLC" PrjFilePath="Hola_Mundo_PLC\Hola_Mundo_PLC.plcproj" TmcFilePath="Hola_Mundo_PLC\Hola_Mundo_PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{712FCE74-FDFE-F161-A2DC-A852328D9C73}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Hola_Mundo_PLC\Hola_Mundo_PLC.tmc" TmcHash="{B33E19D2-816F-9B44-771D-E5338EE49456}">
 					<Name>Hola_Mundo_PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -44,9 +44,5 @@
 				</Instance>
 			</Project>
 		</Plc>
-		<Io/>
 	</Project>
-	<Mappings>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
-	</Mappings>
 </TcSmProject>
