@@ -87,5 +87,5 @@ Este proyecto se utiliza con fines educativos y de prueba. Las contribuciones, s
 
 Este proyecto es de código abierto y está disponible bajo la **Licencia Pública General GNU (GPL)**.
 
-- Consulte el archivo `LICENSE.md` para más detalles.
+- Consulte el archivo `LICENSE` para más detalles.
   
