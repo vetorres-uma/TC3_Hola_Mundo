@@ -1,43 +1,43 @@
 # 👋 Hola Mundo (TwinCAT 3)
 
-## 📝 Descripción del Proyecto
-
-Este proyecto es el **Hola Mundo** para **autómatas programables (PLC)**. 
+El proyecto Demo pretende ser un **Hola Mundo** para **autómatas programables (PLC)**.
 
 Es un proyecto mínimo y funcional, que muestra la declaración y el uso básico de variables booleanas y enteras, ubicadas en los espacios de memoria de marcas, imagen de entrada e imagen de salida. Cubriendo los elementos esenciales de programación de los lenguajes de la norma **IEC 61131-3** para la programación de PLC.
 
-<p align="center">
-  <img src="assets/V_Hola_Mundo.png" alt="Visualizacion de Hola_Mundo" width="500"/>
-</p>
+![Imagen](../images/02_tc3_demo/VISU_Demo.png){width=240px}
 
 Este proyecto incluye además, una **visualización** elemental que permite interactuar con las variables del proyecto, con objetos gráficos. **Formas rectangulares** para mostrar el valor de variables booleanas y numéricas y **botones** para modificar el valor de variables booleanas y numéricas.
 
-### 💻 Código
+### Código
 
-### Parte de declaración
-```iecst
-// Hola Mundo de la Programación de PLC
-PROGRAM MAIN
-VAR
-    ContadorCiclos    : UINT;
-    i_Pulsador AT %I* : BOOL;
-    o_Lampara  AT %Q* : BOOL;
-END_VAR
-```
-### Parte de implementación
-```iecst
-ContadorCiclos := ContadorCiclos + 1;
-o_Lampara := i_Pulsador;
-```
+!!! info "Declaración"
+    ```iecst
+    PROGRAM MAIN
+    VAR
+        ContadorCiclos    : UINT; // Variable numérica en el espacio de marcas
+        i_Pulsador AT %I* : BOOL; // Variable booleana en la imagen de entrada
+        o_Lampara  AT %Q* : BOOL; // Variable booleana en la imagen de salida
+    END_VAR
+    ```
 
-### 💬 Comentarios
+!!! info "Código"
+    ```iecst
+    // Uso de una variable numérica (se incrementa con cada ciclo de ejecución)
+    ContadorCiclos := ContadorCiclos + 1;
+
+    // Uso de variables de entrada y salida booleanas (copia la entrada en la salida)
+    o_Lampara := i_Pulsador;
+    ```
+
+### Comentarios
 
 - La variable `ContadorCiclos` se incrementa indefinidamente una vez por ciclo básico de ejecución del PLC (10 ms).
-- La variable de salida `o_Lampara` copia, continuamente, el valor de la variable de entrada `i_Pulsador`
-- El valor de la variable `ContadorCiclos` se muestra en la visualización.
-- La variable `ContadorCiclos` puede reiniciarse si se acciona el pulsador `Reinicia`
-- El valor de la variable `o_Lampara` se muestra con el cambio de color del rectángulo `Lampara` (verde claro = `false`, verde oscuro = `true`)
-- El valor de la variable `i_Pulsador` cambia cuando se acciona el botón `Pulsador`
+- La variable de salida `o_Lampara` copia, continuamente, el valor de la variable de entrada `i_Pulsador`.
+- El valor de la variable `ContadorCiclos` se muestra en rectángulo gris la visualización.
+- El valor de la variable `ContadorCiclos` se se puede cambiar escribiéndolo en rectángulo blanco la visualización.
+- La variable `ContadorCiclos` puede reiniciarse si se acciona el pulsador `Reinicia`.
+- El valor de la variable `o_Lampara` se muestra con el cambio de color del rectángulo `Lampara` (verde claro = `FALSE`, verde oscuro = `TRUE`).
+- El valor de la variable `i_Pulsador` cambia cuando se acciona el botón `Pulsador`.
 
 ---
 
@@ -78,7 +78,7 @@ Este proyecto se utiliza con fines educativos y de prueba. Las contribuciones, s
 ## 🧑‍💻 Autor
 
 - **Autor Principal:** Victor Torres [@vetorres-uma](<https://github.com/vetorres-uma>)
-- **Revisor**: Angel Moreno [@famoreno](<https://github.com/famoreno>)
+- **Revisor**: Francisco Ángel Moreno [@famoreno](<https://github.com/famoreno>)
 - **Revisor**: Manuel Castellano [@mcastellanoquero](<https://github.com/mcastellanoquero>)
 
 ---
