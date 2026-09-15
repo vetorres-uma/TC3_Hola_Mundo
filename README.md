@@ -1,41 +1,67 @@
 # 👋 Hola Mundo (TwinCAT 3)
 
-El proyecto Demo pretende ser un **Hola Mundo** para **autómatas programables (PLC)**.
+## 📝 Descripción del Proyecto
 
-Es un proyecto mínimo y funcional, que muestra la declaración y el uso básico de variables booleanas y enteras, ubicadas en los espacios de memoria de marcas, imagen de entrada e imagen de salida. Cubriendo los elementos esenciales de programación de los lenguajes de la norma **IEC 61131-3** para la programación de PLC.
+Este proyecto es el **Hola Mundo** de la programación de **autómatas programables (PLC)**. 
 
-![Imagen](../images/02_tc3_demo/VISU_Demo.png){width=240px}
+El proyecto **Hola Mundo** se ha desarrollado en el entorno **TwinCAT 3** empleando el lenguaje **Texto Estructurado (ST)** conforme a la norma **IEC 61131-3**.
 
-Este proyecto incluye además, una **visualización** elemental que permite interactuar con las variables del proyecto, con objetos gráficos. **Formas rectangulares** para mostrar el valor de variables booleanas y numéricas y **botones** para modificar el valor de variables booleanas y numéricas.
+Hola Mundo es un proyecto mínimo y funcional, que muestra la declaración y el uso básico de variables booleanas y enteras, ubicadas en los espacios de memoria de marcas, imagen de entrada e imagen de salida. Cubriendo los elementos esenciales de programación del lenguaje ST de la norma **IEC 61131-3** para la programación de PLC.
 
-### Código
+![Imagen](./assets/V_Hola_Mundo.png){width=430px}
 
-!!! info "Declaración"
+Este proyecto incluye además, una **visualización** elemental que permite, mediante objetos gráficos, interactuar con las variables del proyecto. Utilizando **formas rectangulares**, para mostrar el valor de variables booleanas y numéricas, y **botones**, para modificar el valor de variables booleanas y numéricas.
+
+---
+
+### Estructura (simplificada) del Proyecto PLC (POUs):
+
+```text
+TC3_Hola_Mundo/
+├── TC3_Hola_Mundo.sln             <-- Solución de Visual Studio
+└── TC3_Hola_Mundo/                <-- Proyecto TwinCAT
+    └── Hola_Mundo_PLC/            <-- Proyecto PLC
+        ├── POUs/
+        │   └── MAIN.TcPOU         <-- Programa principal (Código ST)
+        └── VISUs/
+            └── V_Hola_Mundo.TcVISU <-- Interfaz gráfica (Visualización)
+            
+```
+--- 
+
+## Código
+
+!!! info "Parte de Declaración"
     ```iecst
-    PROGRAM MAIN
+    // Hola Mundo de la Programación de PLCPROGRAM MAIN
     VAR
-        ContadorCiclos    : UINT; // Variable numérica en el espacio de marcas
-        i_Pulsador AT %I* : BOOL; // Variable booleana en la imagen de entrada
-        o_Lampara  AT %Q* : BOOL; // Variable booleana en la imagen de salida
+        ContadorCiclos: UINT;
+        i_Pulsador AT %I*: BOOL;
+        o_Lampara  AT %Q*: BOOL;
     END_VAR
     ```
 
-!!! info "Código"
+!!! info "Parte de Implementación"
     ```iecst
-    // Uso de una variable numérica (se incrementa con cada ciclo de ejecución)
     ContadorCiclos := ContadorCiclos + 1;
-
-    // Uso de variables de entrada y salida booleanas (copia la entrada en la salida)
     o_Lampara := i_Pulsador;
     ```
 
-### Comentarios
+---
 
-- La variable `ContadorCiclos` se incrementa indefinidamente una vez por ciclo básico de ejecución del PLC (10 ms).
+## Comentarios
+
+- La interfaz del programa `MAIN` (cabecera y definición de variables) se define en la **Parte de Declaración**. 
+- Los **comentarios** de una línea empiezan con `//`.
+- La variable `ContadorCiclos` se declara como un entero sin signo (`UINT`).
+- La variable `i_Pulsador` se declara como un **booleano** (`BOOL`) y se localiza dinámicamente en la **Imagen de Entrada** (`AT %I*`).
+- La variable `o_Lampara` se declara como un **booleano** (`BOOL`) y se localiza dinámicamente en la **Imagen de Salida** (`AT %Q*`).
+- La variable `ContadorCiclos` se incrementa indefinidamente una vez por **Ciclo Básico** de ejecución del PLC (10 ms).
+- El código del módulo, en lenguaje ST, se incluyue en la **Parte de Implementación**.
 - La variable de salida `o_Lampara` copia, continuamente, el valor de la variable de entrada `i_Pulsador`.
 - El valor de la variable `ContadorCiclos` se muestra en rectángulo gris la visualización.
 - El valor de la variable `ContadorCiclos` se se puede cambiar escribiéndolo en rectángulo blanco la visualización.
-- La variable `ContadorCiclos` puede reiniciarse si se acciona el pulsador `Reinicia`.
+- La variable `ContadorCiclos` puede reiniciarse accionando el pulsador `Reinicia`.
 - El valor de la variable `o_Lampara` se muestra con el cambio de color del rectángulo `Lampara` (verde claro = `FALSE`, verde oscuro = `TRUE`).
 - El valor de la variable `i_Pulsador` cambia cuando se acciona el botón `Pulsador`.
 
